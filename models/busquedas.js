@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 class Busquedas {
 
     historia = [ 'Jalisco', 'Mexico', 'Puerto Vallarta', 'Japon', 'Okinawa' ];

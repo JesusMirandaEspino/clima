@@ -1,1 +1,3 @@
 MAPBOX = pk.eyJ1IjoiamVzdXNtaXJhbmRhIiwiYSI6ImNrbTRheTVpbzAycmEycXVzaHdlYjdvNm4ifQ.t-QJVwR48aCvtzdcp34JfA
+
+pk.eyJ1IjoiamVzdXNtaXJhbmRhIiwiYSI6ImNrbTRheTVpbzAycmEycXVzaHdlYjdvNm4ifQ.t-QJVwR48aCvtzdcp34JfA

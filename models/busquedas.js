@@ -12,7 +12,25 @@ class Busquedas {
     async ciudad( lugar = '' ){
         //Peticion http
 
-        return []; //retornar las ciudades o lugares que coinciden con la busqueda
+        console.log(`Ciudad: ${lugar}`);
+
+
+        try{
+
+        const resp = await axios.get('https://reqres.in/api/users/2');
+        console.log( resp.data );
+        
+        return[];
+
+        }catch(error){
+        
+            console.log(error);
+            return [];
+        }
+
+
+
+         //retornar las ciudades o lugares que coinciden con la busqueda
     } 
 
 }

@@ -3,7 +3,7 @@ const Busquedas = require('./models/busquedas.js');
 
 const main = async() => {
 
-    const busquedas = Busquedas;
+    const busquedas = new Busquedas();
     let opt = '';
 
     do{

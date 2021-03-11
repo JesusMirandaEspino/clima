@@ -10,7 +10,7 @@ class Busquedas {
 
     get paramsMapBox(){
         return {
-            'access_token': 'pk.eyJ1IjoiamVzdXNtaXJhbmRhIiwiYSI6ImNrbTRheTVpbzAycmEycXVzaHdlYjdvNm4ifQ.t-QJVwR48aCvtzdcp34JfA',
+            'access_token': process.env.MAPBOX_KEY,
             'limit': 5,
             'language': 'es'                 
         }
@@ -21,7 +21,6 @@ class Busquedas {
         //Peticion http
 
         console.log(`Ciudad: ${lugar}`);
-
 
         try{
 

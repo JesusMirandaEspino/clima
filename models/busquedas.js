@@ -85,18 +85,16 @@ class Busquedas {
             });
 
         const resp = await intance.get();
-        console.log( resp );
+        const { weather, main } = resp.data;
 
-            return resp
-            /*.data.map(  lugar => ({
-                des: lugar.weather.description,
-                min: lugar.main.temp_min,
-                max: lugar.main.temp_max,
-                temp: lugar.main.temp
-            
-        }) );*/
+            return {
+                desc:    weather[0].description,
+                min:     main.temp_min,
+                max:     main.temp_max,
+                temp:    main.temp
 
-            
+            }
+
 
         }catch(error){
             console.log( error );

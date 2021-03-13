@@ -20,9 +20,12 @@ const main = async() => {
 
                 // Mostrar los lugares, 
                 const id = await  listarLugares(lugares);
+
                 // Seleccionarl el lugar
                 const lugarSel = lugares.find( l => l.id === id );
                 console.log( lugarSel );
+
+                const clima = await busquedas.climaLugar(lugarSel.lat, lugarSel.lng  );
 
                 // Mostrar resultados
                 console.log( 'Informacion de la ciudad'.green );
@@ -30,9 +33,9 @@ const main = async() => {
                 console.log( `Ciudad: ${lugarSel.nombre}`   );
                 console.log( `Lat: ${lugarSel.lat}`   );
                 console.log( `Log: ${lugarSel.lng}`   );
-                console.log( `Temperatura: `   );
-                console.log( `Minima: `   );
-                console.log( `Maxima: `   );
+                console.log( `Temperatura: ${clima.temp}`   );
+                console.log( `Minima: ${clima.min}`   );
+                console.log( `Maxima: ${clima.max}`   );
                 
             break;
 

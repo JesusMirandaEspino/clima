@@ -8,6 +8,7 @@ class Busquedas {
         // Leer BD si existe
     }
 
+    //TODO lugar
     get paramsMapBox(){
         return {
             'access_token': process.env.MAPBOX_KEY,
@@ -17,6 +18,21 @@ class Busquedas {
     }
 
 
+    //TODO clima
+
+        get paramsWheater(){
+        return {
+            appid: process.env.OPENWEATHER_KEY,
+            units: 'metric',
+            lang: 'es'                
+        }
+    }
+
+
+    //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+
+    // TODO **************************Lugar*********************************
     async ciudad( lugar = '' ){
         //Peticion http
 
@@ -31,7 +47,9 @@ class Busquedas {
 
             const resp = await intance.get();
 
-      //  const resp = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/Ja.json?access_token=pk.eyJ1IjoiamVzdXNtaXJhbmRhIiwiYSI6ImNrbTRheTVpbzAycmEycXVzaHdlYjdvNm4ifQ.t-QJVwR48aCvtzdcp34JfA&limit=5&language=es');
+
+//api.openweathermap.org/data/2.5/weather?lat=36.3864928218528&lon=138.592229549504&appid=a7dfb9bfedeaae2fe9b0f50b43ee4ba5
+
         return resp.data.features.map(  lugar => ({
             id: lugar.id,
             nombre: lugar.place_name,
@@ -50,6 +68,40 @@ class Busquedas {
 
          //retornar las ciudades o lugares que coinciden con la busqueda
     } 
+// TODO **************************Lugar*********************************
+
+
+
+
+
+    async climaLugar( lat, lon ){
+
+
+        try{
+//api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+        const intance = axios.create({
+                baseURL: `https://api.openweathermap.org/data/2.5/weather`,
+                params: { ...this.paramsWheater, lat, lon  }
+            });
+
+        const resp = await intance.get();
+        console.log( resp );
+
+            return resp
+            /*.data.map(  lugar => ({
+                des: lugar.weather.description,
+                min: lugar.main.temp_min,
+                max: lugar.main.temp_max,
+                temp: lugar.main.temp
+            
+        }) );*/
+
+            
+
+        }catch(error){
+            console.log( error );
+        }
+    }
 
 }
 

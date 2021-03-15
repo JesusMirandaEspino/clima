@@ -46,11 +46,11 @@ const main = async() => {
 
             case '2':
                 // crear opcion 2
-                busquedas.agregarHistorial.foreach( ( lugar, i ) => {
-                    const idx = `${ i + 1 }.`.green;
-                    console.log( ` ${ idx }  ${ lugar } ` );
-                } );
 
+                busquedas.historial.forEach( ( lugar, i ) => {
+                    const idx = `${ i + 1 }.`.green;
+                    console.log( ` ${ idx }  ${ lugar } `);
+                } );
 
             break;
             

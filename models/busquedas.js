@@ -1,8 +1,11 @@
+const fs = require('fs');
+
 const axios = require('axios');
 
 class Busquedas {
 
-    historia = [ 'Jalisco', 'Mexico', 'Puerto Vallarta', 'Japon', 'Okinawa' ];
+    historial = [];
+    dbPath = './db/database.json';
 
     constructor(){
         // Leer BD si existe
@@ -104,7 +107,22 @@ class Busquedas {
     agregarHistorial( lugar = '' ){
 
         //TODO  Prevenir Duplicados
-        this.historial.unshift( lugar );
+
+        if( this.historial.includes( lugar.toLocaleLowerCase() ) ){
+            return;
+        }
+
+        this.historial.unshift( lugar.toLocaleLowerCase() );
+    }
+
+
+    guardardb(){
+
+        const payload = {
+            hostorial: this.historial
+        }
+
+        fs.writeFileSync( this.dbPath, JSON.stringify( payload ) );
     }
 
 }

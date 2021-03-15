@@ -101,6 +101,12 @@ class Busquedas {
         }
     }
 
+    agregarHistorial( lugar = '' ){
+
+        //TODO  Prevenir Duplicados
+        this.historial.unshift( lugar );
+    }
+
 }
 
 

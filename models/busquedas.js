@@ -8,7 +8,22 @@ class Busquedas {
     dbPath = './db/database.json';
 
     constructor(){
-        // Leer BD si existe
+        this.leerDB()
+    }
+
+    //TODO Historial
+    get historialCapitalizado(){   
+
+        return this.historial.map(  lugar => {
+
+            let palabras = lugar.split( ' ' );
+
+            palabras =  palabras.map( p => p[0].toUpperCase()  + p.substring( 1 ));
+
+            return palabras.join( ' ' );
+
+        });
+
     }
 
     //TODO lugar
@@ -30,6 +45,9 @@ class Busquedas {
             lang: 'es'                
         }
     }
+
+
+
 
 
     //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
@@ -113,16 +131,33 @@ class Busquedas {
         }
 
         this.historial.unshift( lugar.toLocaleLowerCase() );
+
+        this.guardarDB();
     }
 
 
-    guardardb(){
+    guardarDB(){
 
         const payload = {
-            hostorial: this.historial
+            historial: this.historial
         }
 
         fs.writeFileSync( this.dbPath, JSON.stringify( payload ) );
+    }
+
+
+    leerDB(){
+
+        if( !fs.existsSync( this.dbPath ) ){
+            return;
+        }
+
+        const info = fs.readFileSync( this.dbPath, { encoding: 'utf-8' } );
+        const data = JSON.parse( info );
+
+        this.historial = data.historial;
+
+
     }
 
 }
